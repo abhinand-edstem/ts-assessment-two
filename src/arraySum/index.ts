@@ -1,15 +1,15 @@
 function sumArray(array: (number | string)[]): number {
     const initialValue = 0;
-    let stringToArrayConversion = array.map(Number)
-    const sumArrayInNumber = stringToArrayConversion.reduce(
+    let stringToArrayOfNumber = array.map(Number)
+    const sum = stringToArrayOfNumber.reduce(
         (accumulator, currentValue) => accumulator + currentValue,
         initialValue,
     );
 
-    if (isNaN(sumArrayInNumber)) {
+    if (isNaN(sum)) {
         throw new Error("Invalid Inputs : All String must be numeric");
     }
-    return sumArrayInNumber
+    return sum
 }
 
 console.log(sumArray(['1', '5', '3']));
