@@ -38,6 +38,10 @@ function deepDiff<T extends object>(obj1: T, obj2: T): Diff<T> {
         };
     }
 
+    if (Object.keys(ChangeObjects.settings!).length === 0) {
+        delete ChangeObjects.settings;
+    }
+
     return ChangeObjects;
 }
 
