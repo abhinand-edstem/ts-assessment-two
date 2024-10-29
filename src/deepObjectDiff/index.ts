@@ -24,11 +24,13 @@ function deepDiff<T extends object>(obj1: T, obj2: T): Diff<T> {
         };
     }
 
-    if (obj1.settings.notification !== obj2.settings.notification) {
-        ChangeObjects.settings!.notification = {
-            oldValue: obj1.settings.notification,
-            newValue: obj2.settings.notification,
-        };
+    if ('notification' in obj2.settings || 'notification' in obj2.settings) {
+        if (obj1.settings.notification !== obj2.settings.notification) {
+            ChangeObjects.settings!.notification = {
+                oldValue: obj1.settings.notification,
+                newValue: obj2.settings.notification,
+            };
+        }
     }
 
     if (JSON.stringify(obj1.tags) !== JSON.stringify(obj2.tags)) {
@@ -67,7 +69,7 @@ const newUser: User = {
     name: 'john',
     settings: {
         theme: 'dark',
-        notification: true
+        notification: false
     },
     tags: ['dev', 'admins']
 }
